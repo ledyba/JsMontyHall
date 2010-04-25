@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="stylesheet" type="text/css" media="screen" href="style.css" charset="UTF-8" />
+<script type="text/javascript" src="Concurrent.Thread.js"></script>
+<script type="text/javascript" src="mt.js"></script>
+<script type="text/javascript" src="monty.js"></script>
+<title>「モンティホール問題」実験プログラム</title>
+</head>
+<body>
+<div id="main">
+	<div id="header">「モンティホール問題」実験プログラム</div>
+	<div id="discription">
+	一部では有名な話である「<a href="http://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%9B%E3%83%BC%E3%83%AB%E5%95%8F%E9%A1%8C">モンティホール問題</a>」の納得がいかないという人たちのために、実際にJavaScriptで実験するプログラムです。
+	</div>
+	<div id="panel">
+		<div id="ctrl_panel">
+			<div id="btn_panel">
+				実験回数を入力して、実験モードを選らんで実験してください。<br />
+				回数：<input type="text" class="char_input" id="exec_times" value="100" />回<br />
+				<input type="button" value="常に選択肢を*変えない*実験" onclick="exec_keep();" onkeypress="Concurrent.Thread.create(exec_keep);" /><br />
+				<input type="button" value="常に選択肢を*変える*実験" onclick="exec_change();" onkeypress="Concurrent.Thread.create(exec_change);" />
+			</div>
+			<div id="char_panel">
+			理論上は、変えないときは1/3、変えたときは2/3の確率で当たります。実験はうまくいきましたか？
+			</div>
+		</div>
+		<div id="in_panel">
+			<h3>実験結果</h3>
+			<textarea id="output" rows="10" cols="40"></textarea>
+			<h3>常に選択肢を*変えない*場合の確率</h3>
+			<input id="out_keep_times" class="output" value="未実験" />回中<input id="out_keep_hit" class="output" value="未実験" />回あたり　確率：<input id="out_keep_prob" class="output" value="未実験" />%。
+			<h3>常に選択肢を*変える*場合の確率</h3>
+			<input id="out_change_times" class="output" value="未実験" />回中<input id="out_change_hit" class="output" value="未実験" />回あたり　確率：<input id="out_change_prob" class="output" value="未実験" />%。
+		</div>
+	</div>
+	<div id="footer">
+	(C)2010 <a href="http://ledyba.ddo.jp/">ψ（プサイ）の興味関心空間</a>（ライセンス：<a href="http://www.gnu.org/licenses/gpl-3.0.html">GPL v3</a>）<br />
+	乱数の発生には<a href="http://homepage2.nifty.com/magicant/sjavascript/mt.html">JS版メルセンヌツイスタ</a>を使用しています。
+	</div>
+</div>
+</body>
+</html>
